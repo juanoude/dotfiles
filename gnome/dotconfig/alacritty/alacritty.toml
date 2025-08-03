@@ -1,0 +1,22 @@
+
+[window]
+opacity = 0.8
+
+[general]
+import = [
+  #"themes/themes/ayu_mirage.toml",
+  "themes/themes/alacritty_0_12toml",
+  #"themes/themes/autumn.toml",
+  #"themes/themes/cyber_punk_neon.toml",
+  #"themes/themes/dracula.toml",
+  #"themes/themes/dracula_plus.toml",
+  #	"themes/themes/flat_remix.toml",
+  # "themes/themes/gotham.toml",
+  #	"themes/themes/gruvbox.toml",
+  #	"themes/themes/seashells.toml",
+  #	"themes/themes/tokyo_night.toml",
+]
+
+[font]
+normal.family = "Cascadia Code"
+# normal.style = "Bold"
