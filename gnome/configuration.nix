@@ -89,14 +89,16 @@
   users.users.juanoude = {
     isNormalUser = true;
     description = "Juan Ananda";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "kvm" "adbusers" ];
     packages = with pkgs; [
-    #  thunderbird
+ #  thunderbird
     ];
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
+  programs = {
+    firefox.enable = true;
+    adb.enable = true;
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -104,44 +106,44 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    pkgs.chromium
-    pkgs.vim
-    pkgs.zed-editor
-    pkgs.vscode
-    pkgs.git
-    pkgs.lazygit
-    pkgs.slack
-    # pkgs.teams
-    # pkgs.kitty
-    # pkgs.lshw
-    # pkgs.egl-wayland
+    chromium
+    vim
+    zed-editor
+    vscode
+    git
+    lazygit
+    slack
+    # teams
+    # kitty
+    # lshw
+    # egl-wayland
     
     # Terminal stuff
-    pkgs.alacritty
-    pkgs.zellij	  
-    pkgs.lsd
-    pkgs.starship
+    alacritty
+    zellij	  
+    lsd
+    starship
 
     # Temperature monitor
-    pkgs.lm_sensors
-    pkgs.gnomeExtensions.freon
+    lm_sensors
+    gnomeExtensions.freon
 
     # Lazyvim
-    pkgs.fzf
-    pkgs.ripgrep
-    pkgs.neovim
-    pkgs.libgcc
-    pkgs.gcc
-    pkgs.fd
-    pkgs.vimPlugins.LazyVim
-    pkgs.android-studio
-    pkgs.postman
+    fzf
+    ripgrep
+    neovim
+    libgcc
+    gcc
+    fd
+    vimPlugins.LazyVim
+    android-studio
+    postman
     # Languages - Can I move this to a bunch of specific shell.nix?
-    pkgs.go
-    pkgs.flutter
-    pkgs.jdk
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    go
+    # flutter
+    # jdk
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
   ];
 
   fonts.packages = with pkgs; [
@@ -181,6 +183,14 @@
 
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
+  services = {
+    xserver.videoDrivers = ["nvidia"];
+    
+    # Alternative when not installing adb globally
+    #udev.packages = [
+    #  pkgs.android-udev-rules
+    #];
+  };
 
   hardware.nvidia = {
 
