@@ -1,0 +1,18 @@
+[submodule "hyprland/colorschemes/dracula"]
+	path = hyprland/colorschemes/dracula
+	url = https://github.com/dracula/omarchy
+[submodule "hyprland/colorschemes/futurism"]
+	path = hyprland/colorschemes/futurism
+	url = https://github.com/bjarneo/omarchy-futurism-theme
+[submodule "hyprland/colorschemes/aetheria"]
+	path = hyprland/colorschemes/aetheria
+	url = https://github.com/JJDizz1L/aetheria
+[submodule "hyprland/colorschemes/aura"]
+	path = hyprland/colorschemes/aura
+	url = https://github.com/bjarneo/omarchy-aura-theme
+[submodule "hyprland/colorschemes/fireside"]
+	path = hyprland/colorschemes/fireside
+	url = https://github.com/bjarneo/omarchy-fireside-theme
+[submodule "hyprland/colorschemes/pink-blood"]
+	path = hyprland/colorschemes/pink-blood
+	url = https://github.com/ITSZXY/pink-blood-omarchy-theme
