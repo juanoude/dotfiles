@@ -81,7 +81,7 @@ in
         cpu = {
           interval = 5;
           format = "󰍛";
-          on-click = "ghostty -e btop";
+          on-click = "ghostty --title=btop -e btop";
         };
         clock = {
           format = "{:%A %I:%M %p}";
@@ -105,14 +105,14 @@ in
           tooltip-format-disconnected = "Disconnected";
           interval = 3;
           nospacing = 1;
-          on-click = "ghostty -e nmcli";
+          on-click = "ghostty --title=network -e impala";
         };
         battery = {
           interval = 5;
           format = "{capacity}% {icon}";
-          format-discharging = "{icon}";
-          format-charging = "{icon}";
-          format-plugged = "";
+          format-discharging = "{capacity}% {icon}";
+          format-charging = "{capacity}% {icon}";
+          format-plugged = "{capacity}% AC";
           format-icons = {
             charging = [
               "󰢜"
@@ -152,16 +152,18 @@ in
           format-disabled = "󰂲";
           format-connected = "";
           tooltip-format = "Devices connected: {num_connections}";
-          on-click = "blueberry";
+          on-click = "ghostty --title=bluetooth -e bluetui";
         };
         wireplumber = {
           # Changed from "pulseaudio"
           "format" = "";
           format-muted = "󰝟";
           scroll-step = 5;
-          on-click = "pavucontrol";
+          # Experimenting different tools here
+          # on-click = "pavucontrol";
+          # on-click-right = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; # Updated command
+          on-click = "ghostty --title=audio -e wiremix";
           tooltip-format = "Playing at {volume}%";
-          on-click-right = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; # Updated command
           max-volume = 150; # Optional: allow volume over 100%
         };
         tray = {
@@ -172,10 +174,11 @@ in
           tooltip-format = "Power profile: {profile}";
           tooltip = true;
           format-icons = {
-            power-saver = "󰡳";
+            power-saver = "󰌪";
             balanced = "󰊚";
-            performance = "󰡴";
+            performance = "⚡︎";
           };
+          on-click = "case $(powerprofilesctl get) in power-saver) powerprofilesctl set balanced ;; balanced) powerprofilesctl set performance ;; performance) powerprofilesctl set power-saver ;; esac";
         };
         # "custom/dropbox" = {
         #   format = "";

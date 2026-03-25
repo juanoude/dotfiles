@@ -42,8 +42,20 @@ in
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
-  networking.networkmanager.enable = true;
+  # Enable networking with pure iwd
+  networking.networkmanager.enable = false;
+  networking.wireless.iwd.enable = true;
+  networking.wireless.iwd.settings = {
+    General = {
+      EnableNetworkConfiguration = true;  # iwd handles DHCP/IP config
+    };
+    Network = {
+      NameResolvingService = "systemd";  # Use systemd-resolved for DNS
+    };
+    Settings = {
+      AutoConnect = true;
+    };
+  };
   
   # Experimental
   nix.settings.experimental-features = [ "nix-command" ];
@@ -113,6 +125,13 @@ in
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+
+  # Power management
+  services.power-profiles-daemon.enable = true;
+
   programs.zsh.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.juanoude = {
@@ -132,6 +151,9 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    # nix
+    direnv
+
     # Basic stuff
     vivaldi
     slack
@@ -156,6 +178,9 @@ in
     postman
 
     # Omarchy shit!
+    wiremix
+    bluetui
+    impala
     libnotify
     nautilus
     alejandra

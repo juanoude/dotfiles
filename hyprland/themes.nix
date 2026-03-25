@@ -42,11 +42,19 @@ let
       cursor-color = stripHash (cursor.cursor or primary.foreground);
       cursor-text = stripHash (cursor.text or primary.background);
       selection-foreground = stripHash (
-        if selection.text or "" == "CellForeground"
-        then primary.foreground
-        else selection.text or primary.foreground
+        let text = selection.text or "";
+        in if text == "CellForeground" then primary.foreground
+           else if text == "CellBackground" then primary.background
+           else if text == "" then primary.foreground
+           else text
       );
-      selection-background = stripHash (selection.background or "#44475a");
+      selection-background = stripHash (
+        let bg = selection.background or "";
+        in if bg == "CellForeground" then primary.foreground
+           else if bg == "CellBackground" then primary.background
+           else if bg == "" then "#44475a"
+           else bg
+      );
       palette = {
         base00 = stripHash normal.black;
         base01 = stripHash normal.red;

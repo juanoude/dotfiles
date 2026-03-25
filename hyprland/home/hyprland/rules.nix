@@ -8,7 +8,10 @@
       "tile, class:^(chromium)$"
 
       # Settings management
-      "float, class:^(org.pulseaudio.pavucontrol|blueberry.py)$"
+      "float, class:^(com.mitchellh.ghostty)$, title:^(bluetui|bluetooth|btop|network|audio)$"
+      "size 1200 800, class:^(com.mitchellh.ghostty)$, title:^(btop)$"
+      "center, class:^(com.mitchellh.ghostty)$, title:^(btop)$"
+      "float, class:^(org.pulseaudio.pavucontrol)$"
 
       # Float Steam, fullscreen RetroArch
       "float, class:^(steam)$"

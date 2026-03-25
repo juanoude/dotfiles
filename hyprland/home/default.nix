@@ -21,6 +21,7 @@
     ./direnv.nix
     ./vivaldi.nix
     ./yazi.nix
+    ./btop.nix
   ];
 
   home.stateVersion = "25.11";
