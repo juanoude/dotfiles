@@ -11,6 +11,9 @@ let
     theme = currentTheme.colorScheme;
     wallpaper = currentTheme.wallpaper;
     font = "JetBrainsMono Nerd Font";
+    fontSize = 9;
+    monitorConfigs = import ./monitors.nix;
+    currentMonitorConfig = monitorConfigs.dual;  # Change this to switch monitor setup
 in
 {
   imports =
@@ -23,8 +26,8 @@ in
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  home-manager.extraSpecialArgs = { 
-    inherit theme nix-colors wallpaper font currentTheme;
+  home-manager.extraSpecialArgs = {
+    inherit theme nix-colors wallpaper font fontSize currentTheme currentMonitorConfig;
   };
 
   home-manager.useGlobalPkgs = true;

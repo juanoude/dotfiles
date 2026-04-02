@@ -1,8 +1,6 @@
-{...}: {
+{currentMonitorConfig, ...}: {
   wayland.windowManager.hyprland.settings = {
-    monitor = [
-      "eDP-1, 2880x1800@60, 0x0, 1"
-    ];
+    monitor = currentMonitorConfig.monitors;
 
     xwayland = {
       force_zero_scaling = true;

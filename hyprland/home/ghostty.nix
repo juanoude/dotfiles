@@ -3,6 +3,7 @@
   pkgs,
   theme,
   font,
+  fontSize,
   ...
 }:
 let
@@ -19,7 +20,7 @@ in
       window-decoration = "none";
 
       font-family = font;
-      font-size = 12;
+      font-size = fontSize;
 
       theme = "omarchy";
       keybind = [
